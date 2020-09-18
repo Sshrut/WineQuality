@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Wine Quality</title>
+
+    <!-- Base Styles -->
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+    
+</head>
+
+  <body class="login-body">
+      <div class="header" style="color: white" style="text-align: center">
+  				<h1 style="text-align: center" style="font-family:cursive;"  >Check the quality of the Wine</h1>
+  	  		</div>
+          <form class="form-signin" action="{{url_for('predict')}}" method="post">
+          	
+              <p>Alcohol</p>
+              <input type="text" class="form-control" name="Alcohol" placeholder="Example : 10.422983" autofocus required="required">
+              <p>Citric Acid</p>
+              <input type="text" class="form-control" name="Acid" placeholder="Example : 0.270976" autofocus required="required">
+			  <p>Volatile Acid</p>
+              <input type="text" class="form-control" name="Volatile Acid" placeholder="Example : 0.527821" autofocus required="required">
+              <p>Sulphates</p>
+              <input type="text" class="form-control" name="Sulphates" placeholder="Example : 0.658149" autofocus required="required">
+			  <p>Fixed Acidity</p>
+              <input type="text" class="form-control" name="Fixed Acidity" placeholder="Example : 8.319637 " autofocus required="required">
+              <p>Chlorides</p>
+              <input type="text" class="form-control" name="Chlorides" placeholder="Example : 0.087467 " autofocus required="required">
+			 	<br>
+			 	
+			  <button class="btn btn-lg btn-success btn-block" type="submit">Predict</button>
+     
+			  <h2 class='ans'>
+
+
+                        {% if prediction_text==0 %}
+                        
+                        <p><img src="{{url_for('static',filename='lowquality1.jpg')}}"></p>
+
+                        {% elif prediction_text==1 %}
+                        
+                        <p><img src="{{url_for('static',filename='highquality.png')}}"></p>
+                        {% endif %}
+
+
+              </h2>
+          </form>
+  
+  </body>
+</html>
